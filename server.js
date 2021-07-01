@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
-import subscribersRouter from './routes/subscribers';
+import router from './routes/subscribers.js';
 const app = express();
 dotenv.config(); 
 mongoose.connect(process.env.DATABASE_URL, {
@@ -18,7 +18,7 @@ db.once("open", () => {
   console.log("Connected");
 });
 app.use(express.json());
-app.use('/subscribers', subscribersRouter)
+app.use('/subscribers', router)
 app.listen(3000, () => {
   console.log("server start");
 });
